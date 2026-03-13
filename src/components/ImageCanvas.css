@@ -116,36 +116,33 @@
 }
 @keyframes fadeIn { from { opacity: 0; transform: translateX(-50%) translateY(4px); } }
 
-/* 하단 푸터 */
-.canvas-footer {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 10px 20px;
-  border-top: 1px solid var(--border);
-  background: var(--surface);
-  flex-shrink: 0;
-}
-
-.frame-name-label {
-  font-size: 13px;
-  color: var(--text-muted);
-  font-weight: 500;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  max-width: 40%;
-}
-
-.figma-link {
+/* 우측 상단 플로팅 Figma 링크 */
+.figma-link-float {
+  position: absolute;
+  top: 12px;
+  right: 12px;
   display: flex;
   align-items: center;
   gap: 6px;
-  font-size: 12px;
+  padding: 6px 12px;
+  background: rgba(15, 15, 17, 0.75);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
   color: var(--accent);
   text-decoration: none;
-  font-weight: 500;
-  transition: color 0.15s;
+  font-size: 12px;
+  font-weight: 600;
   white-space: nowrap;
+  z-index: 15;
+  transition: background 0.15s, border-color 0.15s, transform 0.15s;
+  pointer-events: all;
+  box-shadow: 0 2px 12px rgba(0, 0, 0, 0.4);
 }
-.figma-link:hover { color: var(--accent-hover); }
+.figma-link-float:hover {
+  background: rgba(124, 110, 247, 0.2);
+  border-color: rgba(124, 110, 247, 0.4);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
+}

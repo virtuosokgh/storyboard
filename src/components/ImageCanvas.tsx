@@ -126,27 +126,27 @@ export default function ImageCanvas({
           />
         ))}
 
+        {/* 우측 상단 Figma 링크 플로팅 버튼 */}
+        {imgLoaded && (
+          <a
+            href={frame.figmaUrl}
+            target="_blank"
+            rel="noreferrer"
+            className="figma-link-float"
+            onClick={e => e.stopPropagation()}
+            title="Figma에서 디자인 스펙 확인"
+          >
+            <FigmaIcon />
+            <span>Figma 스펙 확인 ↗</span>
+          </a>
+        )}
+
         {/* 배치 모드 힌트 */}
         {pendingBadge && imgLoaded && (
           <div className="placing-hint">
             클릭하여 <strong>"{pendingBadge.label}"</strong> 뱃지를 배치하세요
           </div>
         )}
-      </div>
-
-      {/* 하단 Figma 링크 */}
-      <div className="canvas-footer">
-        <span className="frame-name-label">{frame.name}</span>
-        <a
-          href={frame.figmaUrl}
-          target="_blank"
-          rel="noreferrer"
-          className="figma-link"
-          onClick={e => e.stopPropagation()}
-        >
-          <FigmaIcon />
-          Figma에서 디자인 스펙 확인 ↗
-        </a>
       </div>
     </div>
   )
