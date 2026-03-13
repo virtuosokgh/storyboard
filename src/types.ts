@@ -15,7 +15,7 @@ export interface FigmaFrame {
   height: number
 }
 
-export interface StoryboardPage {
+export interface Screen {
   id: string
   frame: FigmaFrame
   badges: Badge[]
