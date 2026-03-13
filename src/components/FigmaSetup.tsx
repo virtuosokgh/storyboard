@@ -8,7 +8,9 @@ interface Props {
 }
 
 export default function FigmaSetup({ onFrameLoaded }: Props) {
-  const [token, setToken] = useState(() => localStorage.getItem('figma_token') || '')
+  const savedToken = localStorage.getItem('figma_token') || ''
+  const [token, setToken] = useState(savedToken)
+  const [showTokenField, setShowTokenField] = useState(!savedToken)
   const [url, setUrl] = useState('')
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
@@ -102,13 +104,32 @@ export default function FigmaSetup({ onFrameLoaded }: Props) {
               발급 방법 ↗
             </a>
           </label>
-          <input
-            type="password"
-            placeholder="figd_xxxxxxxxxxxx..."
-            value={token}
-            onChange={e => setToken(e.target.value)}
-            autoComplete="off"
-          />
+          {!showTokenField ? (
+            <div className="token-saved-row">
+              <div className="token-saved-badge">
+                <svg width="13" height="13" viewBox="0 0 24 24" fill="none">
+                  <path d="M20 6L9 17l-5-5" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
+                토큰 저장됨
+              </div>
+              <button
+                type="button"
+                className="token-change-btn"
+                onClick={() => setShowTokenField(true)}
+              >
+                변경
+              </button>
+            </div>
+          ) : (
+            <input
+              type="password"
+              placeholder="figd_xxxxxxxxxxxx..."
+              value={token}
+              onChange={e => setToken(e.target.value)}
+              autoComplete="off"
+              autoFocus={!savedToken}
+            />
+          )}
         </div>
 
         <div className="setup-field">
