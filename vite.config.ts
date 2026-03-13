@@ -5,12 +5,5 @@ export default defineConfig({
   plugins: [react()],
   server: {
     port: 3000,
-    proxy: {
-      '/figma-api': {
-        target: 'https://api.figma.com',
-        changeOrigin: true,
-        rewrite: (path) => path.replace(/^\/figma-api/, ''),
-      }
-    }
   }
 })

@@ -23,10 +23,10 @@ export function parseFigmaUrl(url: string): { fileKey: string; nodeId: string | 
 }
 
 /**
- * Figma REST API 호출 (proxy 경유)
+ * Figma REST API 직접 호출 (CORS 지원, 별도 서버 불필요)
  */
 async function figmaFetch(path: string, token: string) {
-  const res = await fetch(`/figma-api${path}`, {
+  const res = await fetch(`https://api.figma.com${path}`, {
     headers: { 'X-Figma-Token': token }
   })
   if (!res.ok) {
